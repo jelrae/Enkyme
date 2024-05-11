@@ -12,7 +12,7 @@ import numpy as np
 from tensorflow.keras import backend as K
 from os.path import join
 
-tf.config.threading.set_intra_op_parallelism_threads(84)
+tf.config.threading.set_intra_op_parallelism_threads(0)
 tf.random.set_seed(84)
 
 

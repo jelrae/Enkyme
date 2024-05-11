@@ -234,21 +234,17 @@ def get_representation_input(cid_list):
     XE = ();
     X = ();
     A = ();
-    UniRep = ();
-    extras = ();
     # Generate data
     for cid in cid_list:
         try:
             X = X + (np.load(join(input_data_folder, cid + '_X.npy')), );
             XE = XE + (np.load(join(input_data_folder, cid + '_XE.npy')), );
             A = A + (np.load(join(input_data_folder, cid + '_A.npy')), );
-            extras =  extras + (np.load(join(input_data_folder, cid + '_extras.npy')), );
         except FileNotFoundError: #return zero arrays:
             X = X + (np.zeros((N,32)), );
             XE = XE + (np.zeros((N,N,F)), );
             A = A + (np.zeros((N,N,1)), );
-            extras =  extras + (np.zeros(2), );
-    return(XE, X, A, extras)
+    return(XE, X, A)
 
 input_data_folder = join("../../data/GNN_input_data") 
 def get_substrate_representations(df, training_set, get_fingerprint_fct):
@@ -265,15 +261,13 @@ def get_substrate_representations(df, training_set, get_fingerprint_fct):
     
     while i*64 <= n:
         if (i+1)*64  <= n:
-            XE, X, A, extras = get_representation_input(cid_all[i*64:(i+1)*64])
-            representations = get_fingerprint_fct([np.array(XE), np.array(X),np.array(A),
-                                                   np.array(extras)])[0]
+            XE, X, A = get_representation_input(cid_all[i*64:(i+1)*64])
+            representations = get_fingerprint_fct([np.array(XE), np.array(X),np.array(A)])[0]
             df["GNN FP"][i*64:(i+1)*64] = list(representations[:, :52])
         else:
             print(i)
             XE, X, A, extras = get_representation_input(cid_all[-64:])
-            representations = get_fingerprint_fct([np.array(XE), np.array(X),np.array(A), 
-                                                   np.array(extras)])[0]
+            representations = get_fingerprint_fct([np.array(XE), np.array(X),np.array(A)])[0]
             df["GNN FP"][-64:] = list(representations[:, :52])
         i += 1
         
