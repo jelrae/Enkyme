@@ -22,7 +22,7 @@ def calculate_and_save_input_matrixes(dict, sample_ID, df, save_folder = join(".
         molecule_ID = dict[molecule_ID]
     y = df["kcat"][ind]
     [XE, X, A] = create_input_data_for_GNN_for_substrates(substrate_ID = molecule_ID, print_error=True)
-    if (not A is None) and np.any(X) and np.any(XE) and np.any(A):
+    if (not A is None) : #and np.any(X) and np.any(XE) and np.any(A):
         np.save(join(save_folder, sample_ID + '_X.npy'), X) #feature matrix of atoms/nodes
         np.save(join(save_folder, sample_ID + '_XE.npy'), XE) #feature matrix of atoms/nodes and bonds/edges
         np.save(join(save_folder, sample_ID + '_A.npy'), A) 
