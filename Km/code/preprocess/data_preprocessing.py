@@ -103,15 +103,17 @@ def mw_mets(metabolites):
     mw = 0
     for met in metabolites:
         if met != "":
+            print(met)
             if met[0] == "C":
                 try:
-                    mol = Chem.MolFromMolFile(join("..", "..", "data", "metabolite_data",
+                    mol = Chem.MolFromMolFile(join("..", "..", "data",
                                            "mol-files", met + '.mol'))
                 except:
                     mw = np.nan
                     break
             else:
                 mol = Chem.inchi.MolFromInchi(met)
+            print(mol)
             mw = mw + Descriptors.MolWt(mol)
         
     return(mw)

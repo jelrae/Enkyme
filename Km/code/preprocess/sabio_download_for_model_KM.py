@@ -58,7 +58,7 @@ def sabio_info(allEC):
     #     file.write('\t'.join(['EC', "min_Km"]) + '\n')
 
     ids = {}
-    for EC in allEC[allEC.index('5.1.99.7'):]:
+    for EC in allEC[allEC.index('1.14.14.43'):]:
         QUERY_URL = 'https://sabiork.h-its.org/sabioRestWebServices/kineticlawsExportTsv'
         i += 1
         print('This is %s ----------------------------' %EC)
@@ -84,15 +84,12 @@ def sabio_info(allEC):
             for line in results.strip().split('\n')[1:]:
                 substrateids = []
                 productids = []
-                compound = ''
-                compoundid = ''
-                compoundinfo = ''
                 complete = True
                 entry = line.split('\t')
                 
                 if not is_seed_plant(entry[0]):
                     continue
-
+                
                 if entry[8] != "Km" or not entry[10]:
                     continue
 
@@ -103,12 +100,19 @@ def sabio_info(allEC):
 
                 print(line)
 
-                main_substrate = entry[9]
-
                 substrates=entry[1]
                 products=entry[2]
+                main_substrate = "None"
+
+                if entry[9] in substrates:
+                    main_substrate = entry[9]
+                else:
+                    continue
 
                 for c in (substrates+';'+products).split(';'):
+                    compound = ''
+                    compoundid = ''
+                    compoundinfo = ''
                     if c not in ids.keys():
                         QUERY_URL = 'https://sabiork.h-its.org/sabioRestWebServices/searchCompoundSynonyms'
                         query = {'fields[]':["SabioCompoundID"], "CompoundName":c}
@@ -172,7 +176,7 @@ def sabio_info(allEC):
                     if entry[3]:
                         with open('../../Data/EC_Km_model_' + organism + '.tsv', 'a') as ECfile :
                             ECfile.write('\t'.join([EC, entry[0], ';'.join(list(set(entry[3].split(' ')))), entry[5], entry[4], entry[10], entry[7], entry[6],
-                             substrates, products, '#'.join(substrateids), '#'.join(productids), main_substrate]) + '\n')
+                             substrates, products, '#'.join(substrateids), '#'.join(productids), ids[main_substrate]]) + '\n')
                         
             if min_Km:
                 print(min_Km)
