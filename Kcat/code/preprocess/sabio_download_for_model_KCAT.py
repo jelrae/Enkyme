@@ -111,14 +111,16 @@ def sabio_info(allEC):
                 for line2 in results.strip().split('\n')[1:]:
                     entry2 = line2.split('\t')
                     if entry2[8] == 'kcat/Km' and entry2[:7] == entry[:7]:
+                        if entry[9] != main_substrate:
+                                count += 1
                         main_substrate = entry2[9]
-                        count += 1
                 if count == 0:
                     for line2 in results.strip().split('\n')[1:]:
                         entry2 = line2.split('\t')
                         if entry2[8] == 'Km' and entry2[:7] == entry[:7]:
+                            if entry[9] != main_substrate:
+                                count += 1
                             main_substrate = entry2[9]
-                            count += 1
                 if count != 1 or main_substrate not in substrates:
                     complete=False
 
@@ -188,13 +190,13 @@ def sabio_info(allEC):
                     #     product += list(ids.keys())[list(ids.values()).index(p)] + ';'
 
                     if entry[3]:
-                        with open('../../Data/EC_kcat_model_' + organism + '.tsv', 'a') as ECfile :
+                        with open('../../Data/EC_kcat_model_' + organism + '2.tsv', 'a') as ECfile :
                             ECfile.write('\t'.join([EC, entry[0], ';'.join(list(set(entry[3].split(' ')))), entry[5], entry[4], entry[10], entry[7], entry[6],
                              substrates, products, '#'.join(substrateids), '#'.join(productids), ids[main_substrate]]) + '\n')
                         
             if max_kcat:
                 print(max_kcat)
-                with open('../../Data/max_EC_' + organism + '.tsv', 'a') as ECfile :
+                with open('../../Data/max_EC_' + organism + '2.tsv', 'a') as ECfile :
                         ECfile.write('\t'.join([EC, str(max(max_kcat))]) + '\n')
 
 if __name__ == '__main__' :
