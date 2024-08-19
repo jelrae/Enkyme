@@ -1,0 +1,29 @@
+Model,Dataset,Pearson correlation,R^2
+Enzyme+substrate,Full dataset,0.501,0.079
+Enzyme+reaction,Full dataset,0.493,0.02
+Enzyme+substrate+reaction,Full dataset,0.529,0.055
+Enzyme,Full dataset,0.522,0.025
+Substrate,Full dataset,0.333,0.017
+Reaction,Full dataset,0.395,0.019
+Substrate + reaction,Full dataset,0.399,0.036
+Enzyme+substrate,Arabidopsis,0.552,0.272
+Enzyme+reaction,Arabidopsis,0.505,0.177
+Enzyme+substrate+reaction,Arabidopsis,0.612,0.339
+Enzyme,Arabidopsis,0.43,0.131
+Substrate,Arabidopsis,0.559,0.286
+Reaction,Arabidopsis,0.606,0.282
+Substrate + reaction,Arabidopsis,0.622,0.359
+Enzyme+substrate,Wildtype,0.441,0.134
+Enzyme+reaction,Wildtype,0.301,-0.011
+Enzyme+substrate+reaction,Wildtype,0.405,0.096
+Enzyme,Wildtype,0.258,-0.165
+Substrate,Wildtype,0.381,0.085
+Reaction,Wildtype,0.422,0.123
+Substrate + reaction,Wildtype,0.451,0.157
+Enzyme+substrate,Secondary,0.0574,-0.106
+Enzyme+reaction,Secondary,-0.131,-0.2
+Enzyme+substrate+reaction,Secondary,0.187,-0.067
+Enzyme,Secondary,-0.154,-0.185
+Substrate,Secondary,0.613,0.124
+Reaction,Secondary,-0.067,-0.108
+Substrate + reaction,Secondary,0.272,-0.039
