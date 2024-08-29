@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+#Based on https://github.com/SysBioChalmers/DLKcat/tree/master
+
 from urllib import request
 import requests
 import re
