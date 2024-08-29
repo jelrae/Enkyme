@@ -32,11 +32,12 @@ To run the pipeline, do the following:
 1. Navigate to the preprocess folder in either the kcat or Km folder under the code folder
 2. > python sabio_download_for_model.py
    > python uniprot sequence.py
-3. Run the 01 - Data preprocessing notebook
+3. Run the 01 Data preprocessing notebook
 4. Navigate to the modelling folder
-5. Run the 01 Training xgboost models notebook
-6. Run the 02 Analyzing results notebook
+5. Run the 02 Training xgboost models notebook
+6. Run the 03 Analyzing results notebook
 
-If you want to run the baselines, do the following
-1. Navigate to the baseline folder in the code folder
-2. Run the Tutorial kcat prediction or KM prediction notebook
+If you want to run the baselines, do the following:
+
+1. Navigate to the baseline folder in the code folder (kcat or Km)
+2. Run the kcat prediction or KM prediction notebook
