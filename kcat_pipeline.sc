@@ -12,5 +12,5 @@
 
 eval "$(conda shell.bash hook)"
 conda activate eenv
-cd /home/jearle/Enkyme/Km/code/preprocess/
+cd /home/jearle/personal/Enkyme/Km/code/preprocess/
 python sabio_download_for_model.py python uniprot sequence.py
