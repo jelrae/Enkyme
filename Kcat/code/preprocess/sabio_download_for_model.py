@@ -34,11 +34,11 @@ def eclist():
 
 def sabio_info(allEC):
     i = 0
-    with open('../../Data/EC_kcat_model_' + organism + '.tsv', 'w') as ECfile :
+    with open('../../data/EC_kcat_model_' + organism + '.tsv', 'w') as ECfile :
         records = ['ECs', 'Organism', 'Uniprot IDs', 'PMID', 'Type', 'kcat', 'Temperature', 'pH', 'Substrates', 'Products', 'substrate_IDs', 'product_IDs', 'Main Substrate']
         ECfile.write('\t'.join(records) + '\n')
 
-    with open('../../Data/max_EC_' + organism + '.tsv', 'w') as file :
+    with open('../../data/max_EC_' + organism + '.tsv', 'w') as file :
         file.write('\t'.join(['EC', "max_kcat"]) + '\n')
 
     ids = {}
@@ -165,13 +165,13 @@ def sabio_info(allEC):
                     productids = sorted(productids)
 
                     if entry[3]:
-                        with open('../../Data/EC_kcat_model_' + organism + '2.tsv', 'a') as ECfile :
+                        with open('../../data/EC_kcat_model_' + organism + '2.tsv', 'a') as ECfile :
                             ECfile.write('\t'.join([EC, entry[0], ';'.join(list(set(entry[3].split(' ')))), entry[5], entry[4], entry[10], entry[7], entry[6],
                              substrates, products, '#'.join(substrateids), '#'.join(productids), ids[main_substrate]]) + '\n')
                         
             if max_kcat:
                 print(max_kcat)
-                with open('../../Data/max_EC_' + organism + '2.tsv', 'a') as ECfile :
+                with open('../../data/max_EC_' + organism + '2.tsv', 'a') as ECfile :
                         ECfile.write('\t'.join([EC, str(max(max_kcat))]) + '\n')
 
 if __name__ == '__main__' :
