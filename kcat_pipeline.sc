@@ -11,6 +11,6 @@
 #SBATCH --mem-per-cpu=8000
 
 eval "$(conda shell.bash hook)"
-conda activate eenv
+conda activate ee
 cd /home/jearle/personal/Enkyme/Kcat/code/preprocess/
 python sabio_download_for_model.py python uniprot sequence.py
