@@ -199,24 +199,25 @@ for ind in df_sequences.index:
 
 # In[15]:
 
-
-df_reactions["MW_frac"] = np.nan
-
-for ind in df_reactions.index:
-    substrates = list(df_reactions["substrates"][ind])
-    products = list(df_reactions["products"][ind])
-    
-    mw_subs = mw_mets(metabolites = substrates)
-    mw_pros = mw_mets(metabolites = products)
-    
-    if mw_subs == np.nan or mw_pros == np.nan:
-        df_reactions["MW_frac"][ind] = np.inf
-    if mw_pros != 0:
-        df_reactions["MW_frac"][ind] = mw_subs/mw_pros
-    else:
-        df_reactions["MW_frac"][ind] = np.inf
-        
-df_reactions
+# breakpoint()
+#
+# df_reactions["MW_frac"] = np.nan
+#
+# for ind in df_reactions.index:
+#     substrates = list(df_reactions["substrates"][ind])
+#     products = list(df_reactions["products"][ind])
+#
+#     mw_subs = mw_mets(metabolites = substrates)
+#     mw_pros = mw_mets(metabolites = products)
+#
+#     if mw_subs == np.nan or mw_pros == np.nan:
+#         df_reactions["MW_frac"][ind] = np.inf
+#     if mw_pros != 0:
+#         df_reactions["MW_frac"][ind] = mw_subs/mw_pros
+#     else:
+#         df_reactions["MW_frac"][ind] = np.inf
+#
+# df_reactions
 
 
 # #### Calculating enzyme, reaction and substrate features
