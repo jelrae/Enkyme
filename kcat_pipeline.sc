@@ -2,7 +2,6 @@
 #SBATCH --job-name=Kcat_pipeline
 #SBATCH --output=./server_output_files/kcat_pipe-%a.out
 #SBATCH --error=./server_output_files/kcat_pipe-%a.err
-#SBATCH --nodelist=omics-cn003        # node name
 #SBATCH --nodes=1                     # Number of nodes
 #SBATCH --ntasks-per-node=1           # Number of tasks per node
 #SBATCH --cpus-per-task=1             # Number of CPU cores per task
